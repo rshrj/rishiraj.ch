@@ -53,7 +53,7 @@ When adding new locale-aware routes/pages under `app/[locale]/`, get the locale 
 
 ## Content source material
 
-`docs/source/` (gitignored — never commit; personal repo is public) holds the LinkedIn profile export and CV the landing page copy will be drawn from.
+`docs/source/` (gitignored — never commit; personal repo is public) holds the LinkedIn profile export and three CV variants (CERN STEAM Academy, COST STSM, quantitative research) the landing page copy will be drawn from. Each PDF has a matching `.md` transcription (same basename) — read those instead of the PDFs to bootstrap landing page copy; regenerate a transcription only if its source PDF changes.
 
 ## Deployment
 
