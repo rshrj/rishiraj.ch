@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -23,16 +19,17 @@ export const metadata: Metadata = {
   description: "Personal website on rishiraj.ch — built with Next.js, TypeScript & Tailwind, deployed on Vercel.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const locale = headersList.get('x-locale') ?? 'en';
+
   return (
-    <html lang="en">
-      <body
-        className={`${interSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang={locale}>
+      <body className={`${interSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

@@ -1,10 +1,19 @@
 import Image from "next/image";
+import { getTranslations } from "../../lib/translations";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+import { Locale } from "../../lib/translations";
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = getTranslations(locale as Locale);
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+      <div className="row-start-1 justify-self-end">
+        <LanguageSwitcher />
+      </div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="font-bold text-4xl">Coming soon.</h1>
+        <h1 className="font-bold text-4xl">{t.comingSoon}</h1>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
@@ -16,11 +25,11 @@ export default function Home() {
           <Image
             aria-hidden
             src="/email.svg"
-            alt="Globe icon"
+            alt="Email icon"
             width={16}
             height={16}
           />
-          Contact →
+          {t.contact}
         </a>
       </footer>
     </div>
