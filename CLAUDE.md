@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal website for rishiraj.ch — a Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 app, deployed on Vercel. Currently a "coming soon" placeholder; content will be added incrementally. Package manager is pnpm (see `pnpm-lock.yaml`). Node version is pinned via `.nvmrc`.
+Personal website for rishiraj.ch — a Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 app, deployed on Vercel. Currently a "coming soon" placeholder. Next milestone: a minimal, good-looking landing page aimed at a recruiter who types "rishiraj.ch" and hits enter — content will be sourced from the user's LinkedIn profile + CV (see `docs/source/`), not built out speculatively. Package manager is pnpm (see `pnpm-lock.yaml`). Node version is pinned via `.nvmrc`.
+
+The site owner recently completed a PhD in theoretical and mathematical physics from Sorbonne University (Paris) and is moving from academic research into applied research / industry roles. This is not a generic "fresher" portfolio — copy, framing, and design choices should read as elite technical/research credibility (strong computational and mathematical background), not entry-level. Do not invent biographical or career details; source them from the CV/LinkedIn material once provided.
 
 `typescript` is pinned to 6.0.3 and `eslint` to the 9.x line (not the current `latest` npm tags) because `eslint-config-next`'s dependency on `typescript-eslint`/`eslint-plugin-react` doesn't yet support TypeScript 7 or ESLint 10 — bumping either breaks `pnpm lint`. Check upstream support before bumping past these.
 
@@ -48,3 +50,15 @@ When adding new locale-aware routes/pages under `app/[locale]/`, get the locale 
 ## Path aliases
 
 `@/*` maps to the repo root (see `tsconfig.json`).
+
+## Content source material
+
+`docs/source/` (gitignored — never commit; personal repo is public) holds the LinkedIn profile export and CV the landing page copy will be drawn from.
+
+## Deployment
+
+Vercel project `rishiraj-ch` (org `rshrjs-projects`) is linked via GitHub integration — every push to `main` auto-deploys to production at `rishiraj.ch` / `www.rishiraj.ch`. Vercel's Node.js version setting is kept in sync with `.nvmrc`. `vercel` CLI is linked locally (`.vercel/repo.json`, gitignored); useful for `vercel ls` / `vercel inspect <url>` to check deploy status without leaving the terminal.
+
+## Commit conventions
+
+`[category] short imperative description`, lowercase, no trailing period. Categories used so far: `initial`, `content`, `chore`, `feature`, `docs`.

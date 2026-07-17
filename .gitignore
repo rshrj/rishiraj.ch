@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal source material (CV, LinkedIn export, etc.) — never commit, public repo
+/docs/source/
