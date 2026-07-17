@@ -1,6 +1,44 @@
 {
   "title": "Rishi Raj",
-  "description": "Site web personnel sur rishiraj.ch — construit avec Next.js, TypeScript & Tailwind, déployé sur Vercel.",
-  "comingSoon": "Bientôt disponible.",
-  "contact": "Contact →"
+  "description": "Docteur en physique théorique et mathématique (Sorbonne), travaillant sur le calcul scientifique, l'apprentissage automatique et la recherche quantitative.",
+  "nav": {
+    "writing": "Écrits",
+    "projects": "Projets",
+    "publications": "Publications",
+    "about": "À propos"
+  },
+  "hero": {
+    "role": "Physique théorique et mathématique",
+    "tagline": "Docteur en physique de Sorbonne Université, passant des mathématiques des trous noirs au calcul scientifique, à l'apprentissage automatique et à la recherche quantitative.",
+    "location": "Paris, France"
+  },
+  "sections": {
+    "selectedWork": "Travaux choisis",
+    "latestWriting": "Écrits récents",
+    "writing": "Écrits",
+    "projects": "Projets",
+    "publications": "Publications",
+    "about": "À propos",
+    "elsewhere": "Ailleurs"
+  },
+  "about": {
+    "lead": "À propos",
+    "education": "Formation",
+    "experience": "Expérience",
+    "skills": "Compétences",
+    "awards": "Prix & bourses",
+    "contact": "Me contacter"
+  },
+  "ui": {
+    "viewAllWriting": "Tous les écrits →",
+    "viewAllProjects": "Tous les projets →",
+    "viewAllPublications": "Toutes les publications →",
+    "allWriting": "Écrits",
+    "allProjects": "Projets",
+    "readingTimeSuffix": "min de lecture"
+  },
+  "footer": {
+    "contact": "Contact",
+    "note": "Réalisé avec Next.js · composé en Inter."
+  }
 }

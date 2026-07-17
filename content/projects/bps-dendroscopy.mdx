@@ -1,0 +1,24 @@
+---
+title: "BPS dendroscopy on local ℙ¹ × ℙ¹"
+date: "2024-12-10"
+summary: "Mapping the BPS spectrum of a local Calabi–Yau across stability regimes using scattering diagrams, with symbolic tooling for the figures and consistency checks."
+role: "With Bruno Le Floch and Boris Pioline"
+tags: ["hep-th", "mathematica"]
+links:
+  - label: "arXiv:2412.07680"
+    href: "https://arxiv.org/abs/2412.07680"
+  - label: "Annales Henri Poincaré"
+    href: "https://doi.org/10.1007/s00023-026-01666-3"
+---
+
+"Dendroscopy" is the study of the tree structure of BPS bound states. For the
+local Calabi–Yau $\mathbb{P}^1 \times \mathbb{P}^1$ we tracked the full BPS
+spectrum across three regimes — the orbifold point, the large-volume limit, and
+the $\Pi$-stability slice between them — using **scattering diagrams** whose rays
+encode stable charges.
+
+Much of the work was making the picture consistent: enforcing ray-intersection
+constraints, and extending the $\Gamma_0(4)$ monodromy by a $\mathbb{Z}_4$
+symmetry so the diagram closes up correctly. I wrote the Mathematica tooling that
+generates the figures and tables and checks these constraints, which turned a
+delicate hand computation into something reproducible.

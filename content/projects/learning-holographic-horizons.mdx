@@ -1,0 +1,26 @@
+---
+title: "Learning holographic horizons"
+date: "2023-12-13"
+summary: "A physics-informed machine-learning pipeline that predicts black-hole horizon data directly from a compressed feature vector of the initial state."
+role: "With Vishnu Jejjala, Sukrut Mondkar and Ayan Mukhopadhyay"
+tags: ["scientific-ml", "holography", "python"]
+links:
+  - label: "arXiv:2312.08442"
+    href: "https://arxiv.org/abs/2312.08442"
+  - label: "Phys. Rev. D 111, 026016"
+    href: "https://doi.org/10.1103/PhysRevD.111.026016"
+---
+
+Numerically evolving the asymptotically-AdS$_4$ Einstein equations — the
+Chesler–Yaffe scheme on a pseudospectral Chebyshev grid with Adams–Bashforth
+time stepping — is accurate but expensive. This project asked whether a learned
+model could shortcut the expensive part: predict the **entropy function of the
+apparent horizon** directly from a compressed, ten-dimensional feature vector of
+the initial data.
+
+The answer was yes, and carefully so. The emphasis was as much on discipline as
+on accuracy: strict train/validation/test splits, $k$-fold cross-validation, and
+released code, so that the result is reproducible rather than anecdotal. It sits
+squarely in the "scientific ML" register I care about — physics setting the
+structure, machine learning doing the interpolation, and validation you can
+trust.

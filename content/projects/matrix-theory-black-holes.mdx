@@ -1,0 +1,25 @@
+---
+title: "Black holes through the lens of matrix theory"
+date: "2023-06-01"
+summary: "A high-performance C++ simulation of the BFSS matrix model — thousands of coupled ODEs, conserved-quantity checks, and a ~100–200× speedup over the original symbolic prototype."
+role: "Master's thesis, IIT Madras · supervisors Ayan Mukhopadhyay and Vishnu Jejjala"
+tags: ["hpc", "c++", "matrix-models"]
+links:
+  - label: "GitHub — matrices-masters-thesis"
+    href: "https://github.com/rshrj/matrices-masters-thesis"
+---
+
+The BFSS matrix model describes the low-energy dynamics of $N$ D0-branes as a
+set of large Hermitian matrices evolving in time — a system whose classical
+equations are a dense tangle of coupled nonlinear ODEs. Simulating it well is a
+software-engineering problem as much as a physics one.
+
+I built the integrator in optimized C++ (Boost, GSL), enforcing the Gauss-law
+constraints and monitoring conserved quantities as running correctness checks
+for matrix sizes up to $N \sim 15$. The production runs were week-long PBS
+campaigns on IIT Madras's Aqua HPC cluster across 64+ cores.
+
+The part I still point to is the performance arc: migrating the prototype from
+Mathematica through Python/Julia/C and finally to hand-tuned C++ bought a
+**100–200× speedup**, which is the difference between a toy and an experiment.
+It taught me, concretely, how much physics you can buy with engineering.

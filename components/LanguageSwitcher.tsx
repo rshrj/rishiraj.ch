@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useParams, usePathname, useRouter } from 'next/navigation';
-import { Locale } from '../lib/translations';
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { Locale } from "@/lib/translations";
 
-const languages = [
-  { code: 'en' as Locale, name: 'English' },
-  { code: 'de' as Locale, name: 'Deutsch' },
-  { code: 'fr' as Locale, name: 'Français' },
-  { code: 'it' as Locale, name: 'Italiano' },
+const languages: { code: Locale; name: string }[] = [
+  { code: "en", name: "English" },
+  { code: "de", name: "Deutsch" },
+  { code: "fr", name: "Français" },
+  { code: "it", name: "Italiano" },
 ];
 
 export default function LanguageSwitcher() {
@@ -17,26 +17,27 @@ export default function LanguageSwitcher() {
   const currentLocale = params.locale as Locale;
 
   const handleLanguageChange = (newLocale: Locale) => {
-    // Remove the current locale from the pathname
-    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '/';
-    // Navigate to the new locale
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, "") || "/";
     router.push(`/${newLocale}${pathWithoutLocale}`);
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex items-center gap-3">
       {languages.map((lang) => (
         <button
           key={lang.code}
+          type="button"
           onClick={() => handleLanguageChange(lang.code)}
-          className={`px-3 py-1 rounded-md text-sm transition-colors ${
-            currentLocale === lang.code
-              ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-100'
-              : 'hover:bg-gray-100 text-gray-600 dark:hover:bg-gray-800 dark:text-gray-400'
-          }`}
+          aria-current={currentLocale === lang.code ? "true" : undefined}
           title={lang.name}
+          className={
+            "font-mono text-xs uppercase tracking-wide underline-offset-4 transition-colors " +
+            (currentLocale === lang.code
+              ? "text-foreground underline decoration-1"
+              : "text-muted hover:text-foreground hover:underline")
+          }
         >
-          {lang.code.toUpperCase()}
+          {lang.code}
         </button>
       ))}
     </div>
