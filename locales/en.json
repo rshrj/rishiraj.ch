@@ -1,6 +1,44 @@
 {
   "title": "Rishi Raj",
-  "description": "Personal website on rishiraj.ch — built with Next.js, TypeScript & Tailwind, deployed on Vercel.",
-  "comingSoon": "Coming soon.",
-  "contact": "Contact →"
+  "description": "Theoretical & mathematical physics PhD (Sorbonne) working on scientific computing, machine learning and quantitative research.",
+  "nav": {
+    "writing": "Writing",
+    "projects": "Projects",
+    "publications": "Publications",
+    "about": "About"
+  },
+  "hero": {
+    "role": "Theoretical & Mathematical Physics",
+    "tagline": "Physics PhD from Sorbonne Université, moving from the mathematics of black holes into scientific computing, machine learning and quantitative research.",
+    "location": "Paris, France"
+  },
+  "sections": {
+    "selectedWork": "Selected work",
+    "latestWriting": "Latest writing",
+    "writing": "Writing",
+    "projects": "Projects",
+    "publications": "Publications",
+    "about": "About",
+    "elsewhere": "Elsewhere"
+  },
+  "about": {
+    "lead": "About",
+    "education": "Education",
+    "experience": "Experience",
+    "skills": "Skills",
+    "awards": "Awards & fellowships",
+    "contact": "Get in touch"
+  },
+  "ui": {
+    "viewAllWriting": "All writing →",
+    "viewAllProjects": "All projects →",
+    "viewAllPublications": "All publications →",
+    "allWriting": "Writing",
+    "allProjects": "Projects",
+    "readingTimeSuffix": "min read"
+  },
+  "footer": {
+    "contact": "Contact",
+    "note": "Built with Next.js · set in Inter."
+  }
 }

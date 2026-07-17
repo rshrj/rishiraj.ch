@@ -1,37 +1,70 @@
-import Image from "next/image";
-import { getTranslations } from "../../lib/translations";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
-import { Locale } from "../../lib/translations";
+import Link from "next/link";
+import { getTranslations, type Locale } from "@/lib/translations";
+import { getWriting, getProjects } from "@/lib/content";
+import Container from "@/components/Container";
+import Photo from "@/components/Photo";
+import EntryList from "@/components/EntryList";
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   const t = getTranslations(locale as Locale);
+  const projects = getProjects().slice(0, 3);
+  const writing = getWriting().slice(0, 3);
 
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <div className="row-start-1 justify-self-end">
-        <LanguageSwitcher />
-      </div>
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="font-bold text-4xl">{t.comingSoon}</h1>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="mailto:me@rishiraj.ch"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/email.svg"
-            alt="Email icon"
-            width={16}
-            height={16}
-          />
-          {t.contact}
-        </a>
-      </footer>
-    </div>
+    <>
+      {/* Hero */}
+      <Container className="py-16 sm:py-24">
+        <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between sm:gap-12">
+          <div className="max-w-xl">
+            <p className="label">{t.hero.location}</p>
+            <h1 className="mt-4 font-display text-[clamp(2.75rem,9vw,4.75rem)] font-semibold leading-[0.92] tracking-tight">
+              Rishi Raj
+            </h1>
+            <p className="mt-5 text-lg text-muted">{t.hero.role}</p>
+          </div>
+          <Photo className="w-36 shrink-0 sm:w-52" />
+        </div>
+        <p className="mt-12 max-w-2xl text-xl leading-relaxed sm:text-2xl">
+          {t.hero.tagline}
+        </p>
+      </Container>
+
+      {/* Selected work */}
+      <Container className="border-t border-hairline py-14">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="label">{t.sections.selectedWork}</h2>
+          <Link
+            href={`/${locale}/projects`}
+            className="label transition-colors hover:text-foreground"
+          >
+            {t.ui.viewAllProjects}
+          </Link>
+        </div>
+        <div className="mt-8">
+          <EntryList entries={projects} locale={locale} basePath="/projects" />
+        </div>
+      </Container>
+
+      {/* Latest writing */}
+      <Container className="border-t border-hairline py-14">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="label">{t.sections.latestWriting}</h2>
+          <Link
+            href={`/${locale}/writing`}
+            className="label transition-colors hover:text-foreground"
+          >
+            {t.ui.viewAllWriting}
+          </Link>
+        </div>
+        <div className="mt-8">
+          <EntryList entries={writing} locale={locale} basePath="/writing" />
+        </div>
+      </Container>
+    </>
   );
 }

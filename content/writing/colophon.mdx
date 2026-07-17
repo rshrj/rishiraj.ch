@@ -1,0 +1,28 @@
+---
+title: "Colophon"
+date: "2026-07-15"
+summary: "How this site is built, and what I intend to write here."
+tags: ["meta"]
+---
+
+This is a small, deliberately plain corner of the internet. It exists so that a
+single link — `rishiraj.ch` — is enough to see what I work on: research,
+writing, and the software I build along the way.
+
+The site is a [Next.js](https://nextjs.org) app with the content written in
+Markdown/MDX, so a note can carry real mathematics and real code side by side.
+The type is set in Inter and Inter Tight; the spirit is Swiss — one grotesque, a
+lot of white space, hairline rules, and no ornament that isn't doing work.
+
+```ts
+// Every post is just a file. Frontmatter in, rendered page out.
+const posts = getWriting();          // sorted, typed, newest first
+export const dynamicParams = false;  // fully static at build time
+```
+
+What I plan to put here: notes from the boundary between theoretical physics and
+computation — wall-crossing and BPS spectra, but also the numerical methods,
+machine-learning experiments, and high-performance code that make those
+questions tractable. Less a journal than a lab notebook I'm willing to show.
+
+More soon.

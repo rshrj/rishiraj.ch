@@ -1,0 +1,62 @@
+---
+title: "Counting BPS states, and why the count jumps"
+date: "2026-06-20"
+summary: "A short, self-contained tour of BPS indices and wall-crossing — the phenomenon where a protected count of states changes discontinuously across a wall in moduli space."
+tags: ["physics", "hep-th"]
+---
+
+A recurring theme in my research is that some things you would like to count are
+not, in fact, constant. In a supersymmetric theory the number of _BPS states_ —
+the states saturating a lower bound on their mass — is protected against small
+deformations. So we form an index,
+
+$$
+\Omega(\gamma) \;=\; -\tfrac{1}{2}\,\mathrm{Tr}_{\mathcal{H}_\gamma}\,(-1)^{2J_3}\,(2J_3)^2,
+$$
+
+which is insensitive to the exact spectrum and depends only on the charge
+$\gamma$ and the point in moduli space. Insensitive, that is, until it isn't.
+
+## Walls of marginal stability
+
+The index $\Omega(\gamma)$ is _locally_ constant, but the moduli space is carved
+up by real-codimension-one **walls of marginal stability**. On such a wall a
+bound state of charge $\gamma = \gamma_1 + \gamma_2$ can decay into its
+constituents, because the central charges align:
+
+$$
+\arg Z(\gamma_1) \;=\; \arg Z(\gamma_2).
+$$
+
+Cross the wall and the count changes discontinuously. The bookkeeping for _how_
+it changes is the **wall-crossing formula**; in its primitive form the jump is
+governed by the symplectic pairing $\langle \gamma_1, \gamma_2 \rangle$ of the
+two charges.
+
+## A count you can actually run
+
+The pleasant surprise is how concrete this gets. Enumerating the stable bound
+states at a point in moduli space becomes a problem about **attractor flow
+trees** — rooted binary trees whose leaves are the constituent charges and whose
+internal vertices sit on walls. Counting them is something a computer is happy to
+do:
+
+```python
+def stable_trees(charge, modulus, *, depth=0):
+    """Enumerate attractor-flow trees for `charge` stable at `modulus`."""
+    trees = [Leaf(charge)] if is_elementary(charge) else []
+    for g1, g2 in splittings(charge):
+        if crosses_wall(g1, g2, modulus) and pairing(g1, g2) != 0:
+            for left in stable_trees(g1, modulus, depth=depth + 1):
+                for right in stable_trees(g2, modulus, depth=depth + 1):
+                    trees.append(Node(left, right))
+    return trees
+```
+
+The physics lives in `crosses_wall` and `pairing`; the recursion is just
+careful bookkeeping. Run it across a family of moduli and the discontinuities
+draw themselves — you watch $\Omega(\gamma)$ jump exactly as you cross each wall.
+
+That interplay — a protected invariant, a sharp combinatorial shadow, and a
+computation you can validate line by line — is most of what I find worth writing
+about here.
