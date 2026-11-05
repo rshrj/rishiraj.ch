@@ -4,6 +4,18 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   // Let Next treat .md / .mdx as first-class source alongside ts/tsx.
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  // Short, printable CV link (encoded in the QR code on the printed CV).
+  // Temporary redirect so /cv can be repointed to a newer PDF later; the
+  // dated PDF itself stays put, so old links keep resolving to that exact file.
+  async redirects() {
+    return [
+      {
+        source: "/:locale(en|de|fr|it)?/cv",
+        destination: "/cv/Rishi_Raj_CV_2026-11.pdf",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 // Plugins are declared as string tuples (not imported functions) so the config
